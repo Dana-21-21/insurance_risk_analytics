@@ -1,13 +1,17 @@
+!*.dvc
 venv/
 __pycache__/
 .ipynb_checkpoints/
 .pytest_cache/
 *.pyc
 
-data/
+data/*
+!data/**/*.dvc
+
 
 models/
 
 .DS_Store
 
 .env
+!*.dvc
