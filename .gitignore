@@ -15,4 +15,11 @@ models/
 
 .env
 !*.dvc
+<<<<<<< HEAD
 .dvc/cache/
+=======
+<<<<<<< HEAD
+=======
+.dvc/cache/
+>>>>>>> main
+>>>>>>> task-2
