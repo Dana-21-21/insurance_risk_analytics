@@ -17,7 +17,8 @@ def load_data(filepath):
     pd.DataFrame
         Loaded insurance dataset.
     """
-    return pd.read_csv(filepath, sep="|")
+    #return pd.read_csv(filepath, sep="|")
+    return pd.read_csv(filepath, sep="|", low_memory=False)
 
 
 def preprocess_data(df):
