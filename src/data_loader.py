@@ -23,21 +23,41 @@ def load_data(filepath):
 
 def preprocess_data(df):
     """
-    Perform basic preprocessing.
-
-    - Convert TransactionMonth to datetime.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-
-    Returns
-    -------
-    pd.DataFrame
+    Basic preprocessing and feature engineering.
     """
 
     df = df.copy()
 
-    df["TransactionMonth"] = pd.to_datetime(df["TransactionMonth"])
+
+    # Convert date column
+    df["TransactionMonth"] = pd.to_datetime(
+        df["TransactionMonth"]
+    )
+
+
+    # Create Transaction Year
+
+    df["TransactionYear"] = (
+        df["TransactionMonth"]
+        .dt.year
+    )
+
+
+    # Create Vehicle Age
+
+    if "RegistrationYear" in df.columns:
+
+        df["VehicleAge"] = (
+            df["TransactionYear"]
+            -
+            df["RegistrationYear"]
+        )
+
+
+        df["VehicleAge"] = (
+            df["VehicleAge"]
+            .clip(lower=0)
+        )
+
 
     return df
